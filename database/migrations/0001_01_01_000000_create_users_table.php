@@ -16,6 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable()->unique();
+            $table->integer('age')->default(18);
+            $table->boolean('gender')->default(true); // true for male, false for female
+            $table->float('body_weight')->default(1.681);
+            $table->float('body_height')->default(70);
+            $table->boolean('status')->default(true);
+            $table->string('avatar')->nullable();
+            $table->integer('level')->default(1);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
