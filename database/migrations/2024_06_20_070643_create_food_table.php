@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('food', function (Blueprint $table) {
+        Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('food_name');
             $table->text('desc')->nullable();
+            $table->string('img');
+            $table->integer('number_eat')->nullable();
             $table->string('category_food_id');
             $table->boolean('status')->default(true);
             $table->timestamps();
