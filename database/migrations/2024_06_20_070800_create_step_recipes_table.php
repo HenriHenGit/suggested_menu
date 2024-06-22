@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('step_recipes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->text('content');
             $table->integer('sort_step');
-            $table->string('img')->nullable();
-            $table->bigInteger('cooking_recipe_id')->unsigned();
+            $table->bigInteger('food_id')->unsigned();
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('cooking_recipe_id')->references('id')->on('cooking_recipes')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
         });
     }
 

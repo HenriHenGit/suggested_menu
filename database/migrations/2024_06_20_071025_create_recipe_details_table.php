@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('recipe_details', function (Blueprint $table) {
             $table->bigInteger('ingredient_id')->unsigned();
-            $table->bigInteger('cooking_recipe_id')->unsigned();
+            $table->bigInteger('food_id')->unsigned();
             $table->float('amount')->nullable();
             $table->string('unit')->nullable();
             $table->timestamps();
@@ -21,10 +21,10 @@ return new class extends Migration
 
             // Thiết lập khóa ngoại
             $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
-            $table->foreign('cooking_recipe_id')->references('id')->on('cooking_recipes')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
 
 
-            $table->primary(['ingredient_id', 'cooking_recipe_id']);
+            $table->primary(['ingredient_id', 'food_id']);
         });
     }
 

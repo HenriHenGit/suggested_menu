@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('img');
-            $table->bigInteger('food_id')->unsigned();
+            $table->bigInteger('step_recipe_id')->unsigned();
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('step_recipe_id')->references('id')->on('step_recipes')->onDelete('cascade');
         });
     }
 

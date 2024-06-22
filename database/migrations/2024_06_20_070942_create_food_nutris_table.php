@@ -19,7 +19,7 @@ return new class extends Migration
             $table->softDeletes();
 
 
-            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
             $table->foreign('nutri_id')->references('id')->on('nutris')->onDelete('cascade');
 
 
