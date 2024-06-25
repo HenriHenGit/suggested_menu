@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from uitheme.net/orgomart/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Apr 2024 13:05:13 GMT -->
 
 <head>
     <meta charset="UTF-8">

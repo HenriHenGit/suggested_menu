@@ -76,7 +76,7 @@
                                     class="feather-heart text-grey-500"></i></a>
                             <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#cartmodal"><i
                                     class="feather-shopping-bag text-grey-500"></i></a>
-                            <a href="dashboard.html" class="nav-icon p-0"><img src="images/profile-4.png"
+                            <a href="{{ asset('admin') }}" class="nav-icon p-0"><img src="images/profile-4.png"
                                     alt="user" class="w-40 mt-1"></a>
                         </div>
                     </div>
