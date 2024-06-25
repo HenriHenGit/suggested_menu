@@ -1399,7 +1399,16 @@
                                     <li><a class="dropdown-item" href="coupon.html"> Coupon</a></li>
                                     <li><a class="dropdown-item" href="payment.html"> Payment </a></li>
                                     <li><a class="dropdown-item" href="notification.html"> Notification </a></li>
-                                    <li><a class="dropdown-item" href="default.html"> Logout </a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+
                                 </ul>
                             </li>
                             <li class="nav-item active dropdown">
