@@ -13,6 +13,8 @@ class Food extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $table = 'foods';
+
     protected $fillable = [
         'food_name',
         'desc',
