@@ -11,6 +11,11 @@ class Food_nutri extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public function foodNutri()
+    {
+        return $this->hasMany(Food_nutri::class, 'food_id', 'id');
+    }
+
     protected $dates = ['deleted_at'];
 
     protected $fillable = [

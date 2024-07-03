@@ -47,8 +47,8 @@
 </head>
 
 <body>
-    <h2>Nutritional Needs</h2>
-    <form action="{{ route('nutri_needs.update') }}" method="POST">
+    <h2>Nhu cầu dinh dưỡng của bạn (Tham Khảo)</h2>
+    <form action="{{ route('suggestMeal.update') }}" method="POST">
         @csrf
         <table>
             <thead>
@@ -58,23 +58,38 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($needsPerMeal as $need)
+                @foreach ($needsUser as $need)
                     <tr>
-                        <td>{{ $need->nutri_id }}</td>
-                        <td>
-                            <input type="text" name="nutritional_needs[{{ $need->id }}][amount]"
-                                value="{{ $need->amount }}">
-                            <input type="hidden" name="nutritional_needs[{{ $need->id }}][id]"
-                                value="{{ $need->id }}">
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <button type="submit" class="btn">Cập nhật bữa ăn</button>
-    </form>
-    </br>
-    <a href="{{ route('suggestMeal.hand') }}" class="btn">Nhập lại thông tin</a>
+                        @foreach ($nutriDetail as $nutriName)
+                            @if ($nutriName->id == $need->nutri_id)
+                                <td>{{ $nutriName->name }}</td>
+                            @break
+                        @endif
+                    @endforeach
+
+                    <td>
+                        <input type="text" name="nutri_needs[{{ $need->nutri_id }}][amount]"
+                            value="{{ $need->amount }}">
+                        @foreach ($nutriDetail as $nutriName)
+                            @if ($nutriName->id == $need->nutri_id)
+                                <label>{{ $nutriName->unit }}</label>
+                            @break
+                        @endif
+                    @endforeach
+                    <input type="hidden" name="nutri_needs[{{ $need->nutri_id }}][user_id]"
+                        value="{{ $need->user_id }}">
+                    {{-- <input type="hidden" name="nutri_needs[user][nutri_name]" value="{{ $need->nutri_id }}"> --}}
+                </td>
+
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+<label for="meals">Ăn máy bữa:</label>
+<input type="number" id="meals_per_day" name="meals_per_day" required><label> /ngày</label>
+<button type="submit" class="btn">Cập nhật bữa ăn</button>
+</form>
+</br>
 </body>
 
 </html>

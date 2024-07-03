@@ -26,9 +26,44 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $categories = [
+            'main_dishes' => 1,
+            'drinks' => 2,
+            'appetizer' => 3,
+            'desserts' => 4,
+        ];
+        $userId = session('userId');
+
+        $meals = session('meals');
+        if (!empty($meals)) {
+            foreach ($meals as $index => $meal) {
+                $isMeal = 'Bữa ăn ' . ($index + 1);
+                $location = 0;
+                $i = 0;
+                foreach ($meal['meal'] as $category => $food) {
+                    if (isset($categories[$category])) {
+                        $location = $categories[$category];
+                    } else {
+                        $location = 0;
+                    }
+                    $menu = new Menu();
+                    $data = Menu::where('user_id', $userId)
+                        ->where('food_id', $food->id)
+                        ->first();
+                    if (isset($data[0])) {
+                        $menu->user_id = $userId;
+                        $menu->food_id = $food->id;
+                        $menu->is_meal = $isMeal;
+                        $menu->location = $location;
+                        $menu->save();
+                    }
+                }
+            }
+        }
+        $createdMeal = true;
+        return redirect()->route('suggestMeal.handle', compact('createdMeal'));
     }
 
     /**

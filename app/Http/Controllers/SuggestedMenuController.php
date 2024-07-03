@@ -6,56 +6,73 @@ use Illuminate\Http\Request;
 use App\Models\Order_nutri;
 use App\Models\Food;
 use App\Models\Food_nutri;
+use App\Models\User;
+use App\Models\Nutri;
+use App\Models\User_detail;
 use Illuminate\Support\Facades\DB;
 
 class SuggestedMenuController extends Controller
 {
-    public function index()
+    public function handle(Request $request)
     {
-        return view('infor_user');
-    }
+        // Nhận request id của người dùng (demo vd: 2)
+        $userId = 2;
+        // Phần trăm sai lệch bữa ăn (Mặc định 5%)
+        $tolerance = 0.05;
+        // Số lần lập tạo ra bữa ăn (Tối thiểu là 20,...)
+        $timesFind = 100;
+        // Tìm chính xác theo nhu cầu dinh dưỡng (Tối thiểu là 600->1000...)
+        $toleranceMeal = 600;
 
-    public function hand(Request $request)
-    {
-        // Lấy dữ liệu từ request
-        $age = $request->input('age');
-        $gender = $request->input('gender');
-        $level = $request->input('level');
-        // $weight = $request->input('weight');
-        // $height = $request->input('height');
-        $meals_per_day = $request->input('meals_per_day', 4); // Số bữa ăn mặc định là 4 nếu không có trong request
-        // $eats = $request->input('eats', 4);
+        // Số lần bữa ăn trong 1 ngày (Có thể sửa)
+        if (!empty($request['meals_per_day']))
+            $meals_per_day = $request['meals_per_day'];
+        else
+            $meals_per_day = 1; // (Có thể sửa)
 
-        // Lấy nhu cầu dinh dưỡng của người dùng
-        $needs = Order_nutri::where('age', $age)
+        // Lấy thông tin người dùng (Mặc định)
+        $user = User::find($userId);
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+        $age = $user->age;
+        $gender = $user->gender;
+        $level = $user->level;
+
+        // Lấy nhu cầu dinh dưỡng của người dùng đã có sẵn (Mặc định)
+        $needsReference = Order_nutri::where('age', $age)
             ->where('gender', $gender)
             ->where('level', $level)
             ->get();
+        // Thêm nhu cầu người dùng vào order_nutri (Mặc định)
+        $this->insertUserDetail($needsReference, $userId);
 
-        $tolerance = 0.01;
+        $needs = User_detail::where('user_id', $userId)->get();
 
-        // Chia nhu cầu dinh dưỡng thành các bữa ăn
+        // Chia nhu cầu dinh dưỡng thành các bữa ăn (Mặc định)
         $needsPerMeal = $this->divideDailyNeeds($needs, $meals_per_day);
 
-        // Lấy thông tin dinh dưỡng của các món ăn
+        // Lấy thông tin dinh dưỡng của các món ăn (Mặc định)
         $foodNutri = Food_nutri::all();
 
-        // Tìm các món ăn thỏa mãn nhu cầu dinh dưỡng
-        $matchingFoodIds = $this->findMatchingFoods($needsPerMeal, $foodNutri, $tolerance);
+        // Lấy thông tin món ăn từ bảng food và phân loại (Mặc định)
+        $categorizedFoods = $this->getFoods();
 
-        // Lấy thông tin món ăn từ bảng food và phân loại
-        $categorizedFoods = $this->getFoods($matchingFoodIds);
+        // Tạo bữa ăn từ các món ăn phân loại (Mặc định)
+        $meals = $this->createMeals($categorizedFoods, $needsPerMeal, $timesFind, $toleranceMeal);
 
-        // Tạo bữa ăn từ các món ăn phân loại
-        $meals = $this->createMeals($categorizedFoods, $needsPerMeal, $tolerance);
+        // Thêm vào bảng oder_nutri (Mặc định)
+        $needsUser = $this->initialDailyNeeds($needs, $meals_per_day);
 
-        // dd($meals);
+        // Lấy thông tin dinh dưỡng
+        $nutriDetail = Nutri::all();
 
-        //Thêm vào bảng oder_nutri
-        // $this->insertOrderNutri($needsPerMeal, 2); /// user id vd
+        // Người dùng đã có bữa ăn không tạo nữa (trả về là 1)
+        $createdMeal = $request['createdMeal'];
 
-        return view('suggest_meals', compact('meals', 'needsPerMeal'));
-        // dd($categorizedFoods);
+        //Chuyển dữ dữ liệu sang MenuController
+        $this->transferMeal($userId, $meals);
+        return view('suggest_meals', compact('meals', 'needsUser', 'nutriDetail', 'createdMeal'));
     }
 
     // Chia nhu cầu dinh dưỡng thành các bữa ăn
@@ -68,68 +85,82 @@ class SuggestedMenuController extends Controller
         return $needs;
     }
 
-    private function insertOrderNutri($orderNutris, $userId)
+
+    // Nhu cầu dinh dưỡng người dùng
+    private function initialDailyNeeds($needs, $meals_per_day)
     {
-        foreach ($orderNutris as $orderNutri) {
-            $order_nutri = new Order_nutri;
-            $order_nutri->age = $orderNutri->age;
-            $order_nutri->gender = $orderNutri->gender;
-            $order_nutri->level = $orderNutri->level;
-            $order_nutri->level_detail = $orderNutri->level_detail;
-            $order_nutri->amount = $orderNutri->amount;
-            $order_nutri->nutri_id = $orderNutri->nutri_id;
-            $order_nutri->user_id = $userId;
-            $order_nutri->save();
+        $portion = 1 * $meals_per_day;
+        foreach ($needs as $need) {
+            $need->amount *= $portion;
+        }
+        return $needs;
+    }
+
+    // Thêm user mới vào order_nutri
+    private function insertUserDetail($orderNutris, $userId)
+    {
+        $data = User_detail::where('user_id', $userId)->first();
+        if (!isset($data)) {
+            foreach ($orderNutris as $orderNutri) {
+                $order_nutri = new User_detail;
+                $order_nutri->user_id = $userId;
+                $order_nutri->nutri_id = $orderNutri->nutri_id;
+                $order_nutri->amount = $orderNutri->amount;
+                $order_nutri->save();
+            }
         }
     }
 
-    // private function showNutritionalNeeds($userId = 2)
-    // {
-    //     // Lấy thông tin dinh dưỡng của người dùng
-    //     $nutritionalNeeds = Order_nutri::where('user_id', $userId)->get();
-    //     // Trả về view với dữ liệu dinh dưỡng của người dùng
-    //     return $nutritionalNeeds;
-    // }
+    // Cập nhật nhu cầu dinh dưỡng người dùng
     public function update(Request $request)
     {
-        $userId = 2; // Giả sử user_id hiện tại là 1
+        foreach ($request->input('nutri_needs') as $key => $need) {
+            $userDetail = User_detail::where('user_id', $need['user_id'])
+                ->where('nutri_id', $key)->first();
+            if ($userDetail) {
+                $userDetail->amount = $need['amount'];
+                $userDetail->save();
+            }
+        }
+        $meals_per_day = $request->input('meals_per_day');
 
-        // Xử lý cập nhật thông tin dinh dưỡng
-        // foreach ($request->input('nutritional_needs') as $need) {
-        //     $orderNutri = Order_nutri::find($need['id']);
-        //     $orderNutri->amount = $need['amount'];
-        //     $orderNutri->save();
-        // }
-
-        // Chuyển hướng về trang đề xuất bữa ăn
-        // return redirect()->route('suggestMeal.hand');
+        return redirect()->route('suggestMeal.handle', compact('meals_per_day'));
     }
 
-
-    // Tìm các món ăn thỏa mãn nhu cầu dinh dưỡng
-    private function findMatchingFoods($needs, $foodNutri, $tolerance = 0.01)
+    private function calculatorDifference($mealNutri, $needsPerMeal)
     {
-        $matchingFoods = [];
-        foreach ($needs as $need) {
-            foreach ($foodNutri as $food) {
-                if ($food->nutri_id == $need->nutri_id) {
-                    $difference = abs($food->amount - $need->amount);
-                    if ($difference <= $need->amount * $tolerance) {
-                        // if (!isset($matchingFoods[$food->food_id])) {
-                        //     $matchingFoods[$food->food_id] = [];
-                        // }
-                        $matchingFoods[$food->food_id][] = $food->nutri_id;
+        $totalFood = 0;
+        foreach ($needsPerMeal as $need) {
+            if (isset($mealNutri[$need->nutri_id])) {
+                $totalFood += abs(round($mealNutri[$need->nutri_id]) - round($need->amount));
+            }
+        }
+        return $totalFood;
+    }
+
+    private function mealNutrition($listFood, $needsPerMeal)
+    {
+        $mealNutri = [];
+        foreach ($listFood as $food) {
+            $foodNutri = Food_nutri::where('food_id', $food->id)->get();
+            foreach ($needsPerMeal as $need) {
+                foreach ($foodNutri as $nutri) {
+                    if (!isset($mealNutri[$need->nutri_id])) {
+                        $mealNutri[$need->nutri_id] = 0;
                     }
+                    if ($need->nutri_id == $nutri->nutri_id)
+                        $mealNutri[$need->nutri_id] += round($nutri->amount) / $food->number_eat;
                 }
             }
         }
-        return $matchingFoods;
+        return $mealNutri;
     }
 
-    // Lấy thông tin món ăn từ bảng food và phân loại
-    private function getFoods($foodIds)
+
+    //Lấy thông tin món ăn từ bảng food và phân loại
+    private function getFoods()
     {
-        $foods = Food::whereIn('id', array_keys($foodIds))->get();
+        $foods = Food::select('id', 'food_name', 'desc', 'img', 'number_eat', 'category_food_id')->get();
 
         $categorizedFoods = [
             'main_dishes' => [],
@@ -137,58 +168,83 @@ class SuggestedMenuController extends Controller
             'appetizer' => [],
             'desserts' => []
         ];
+
         foreach ($foods as $food) {
             switch ($food->category_food_id) {
                 case 'main_dishes':
-                    $categorizedFoods['main_dishes'][] = $food;
-                    break;
                 case 'drinks':
-                    $categorizedFoods['drinks'][] = $food;
-                    break;
                 case 'appetizer':
-                    $categorizedFoods['appetizer'][] = $food;
-                    break;
                 case 'desserts':
-                    $categorizedFoods['desserts'][] = $food;
+                    $categorizedFoods[$food->category_food_id][] = $food;
                     break;
             }
         }
+
         return $categorizedFoods;
     }
 
-    // Tạo bữa ăn từ các món ăn phân loại
-    private function createMeals($categorizedFoods, $needsPerMeal, $tolerance = 0.01)
+    private function createMeals($categorizedFoods, $meals_per_day, $timesFind = 100, $toleranceMeal = 600)
     {
         $meals = [];
-        $categories = ['main_dishes', 'drinks', 'appetizer', 'desserts'];
-        foreach ($needsPerMeal as $needs) {
+        $categories = ['main_dishes', 'appetizer', 'desserts'];
+
+
+        for ($i = 0; $i < $timesFind; $i++) {
             $meal = [];
             $mealNutri = [];
 
+
             foreach ($categories as $category) {
-                if (!empty($categorizedFoods[$category])) {
-                    $food = array_shift($categorizedFoods[$category]);
-                    $meal[$category] = $food;
-                    $foodNutri = Food_nutri::where('food_id', $food->id)->get();
-                    foreach ($foodNutri as $nutri) {
-                        if (!isset($mealNutri[$nutri->nutri_id])) {
-                            $mealNutri[$nutri->nutri_id] = 0;
+
+                $foodsInCategory = $categorizedFoods[$category];
+
+
+                if (!empty($foodsInCategory)) {
+
+                    $food = array_shift($foodsInCategory);
+                    $listFood = [$food];
+
+                    foreach (array_diff($categories, [$category]) as $otherCategory) {
+
+                        if (!empty($categorizedFoods[$otherCategory])) {
+
+                            $otherFood = array_shift($categorizedFoods[$otherCategory]);
+                            $listFood[] = $otherFood;
                         }
-                        $mealNutri[$nutri->nutri_id] += $nutri->amount / $food->number_eat;
+                    }
+
+                    $totalNutriFood = $this->mealNutrition($listFood, $meals_per_day);
+                    $difference = $this->calculatorDifference($totalNutriFood, $meals_per_day);
+
+                    if ($difference <= $toleranceMeal) {
+                        $meal[$listFood[0]->category_food_id] = $listFood[0];
+                        $meal[$listFood[1]->category_food_id] = $listFood[1];
+                        $meal[$listFood[2]->category_food_id] = $listFood[2];
+                        $mealNutri = $totalNutriFood;
+                    }
+
+                    if (!isset($meal[$category])) {
+                        array_unshift($categorizedFoods[$category], $food);
                     }
                 }
             }
-            foreach ($needsPerMeal as $need) {
-                // dd($mealNutri[$need->nutri_id]);
-                if (isset($mealNutri[$need->nutri_id]) && $mealNutri[$need->nutri_id] > $need->amount * (1 + $tolerance)) {
-                    unset($meal[$category]); // $category đã được định nghĩa ở đâu đó trong vòng lặp
-                }
+
+            if (!empty($meal)) {
+                $meals[] = [
+                    'meal' => $meal,
+                    'nutri' => $mealNutri
+                ];
             }
-            $meals[] = [
-                'meal' => $meal,
-                'nutri' => $mealNutri
-            ];
         }
         return $meals;
+    }
+
+
+    private function transferMeal($userId, $meals)
+    {
+        session()->flash('userId', $userId);
+        session()->flash('meals', $meals);
+
+        return redirect()->route('menu.store');
     }
 }
