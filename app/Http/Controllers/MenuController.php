@@ -30,10 +30,10 @@ class MenuController extends Controller
     {
         $categories = [
             'main_dishes' => 1,
-            'drinks' => 2,
-            'appetizer' => 3,
-            'desserts' => 4,
+            'appetizer' => 2,
+            'desserts' => 3,
         ];
+
         $userId = session('userId');
 
         $meals = session('meals');
@@ -41,20 +41,17 @@ class MenuController extends Controller
             foreach ($meals as $index => $meal) {
                 $isMeal = 'Bữa ăn ' . ($index + 1);
                 $location = 0;
-                $i = 0;
                 foreach ($meal['meal'] as $category => $food) {
-                    if (isset($categories[$category])) {
-                        $location = $categories[$category];
-                    } else {
-                        $location = 0;
-                    }
-                    $menu = new Menu();
-                    $data = Menu::where('user_id', $userId)
-                        ->where('food_id', $food->id)
+                    $location = $categories[$category] ?? 0;
+
+                    $menu = Menu::where('user_id', $userId)
+                        ->where('food_id', $food['id'])
                         ->first();
-                    if (isset($data[0])) {
+
+                    if (!$menu) {
+                        $menu = new Menu();
                         $menu->user_id = $userId;
-                        $menu->food_id = $food->id;
+                        $menu->food_id = $food['id'];
                         $menu->is_meal = $isMeal;
                         $menu->location = $location;
                         $menu->save();

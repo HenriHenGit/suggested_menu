@@ -78,7 +78,6 @@
                     @endforeach
                     <input type="hidden" name="nutri_needs[{{ $need->nutri_id }}][user_id]"
                         value="{{ $need->user_id }}">
-                    {{-- <input type="hidden" name="nutri_needs[user][nutri_name]" value="{{ $need->nutri_id }}"> --}}
                 </td>
 
             </tr>
