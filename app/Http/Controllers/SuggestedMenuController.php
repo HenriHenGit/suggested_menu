@@ -36,6 +36,9 @@ class SuggestedMenuController extends Controller
             return redirect()->back()->with('error', 'User not found');
         }
         $age = $user->age;
+        if ($age > 60) {
+            $age = 60;
+        }
         $gender = $user->gender;
         $level = $user->level;
 
@@ -72,7 +75,7 @@ class SuggestedMenuController extends Controller
 
         //Chuyển dữ dữ liệu sang MenuController
         $this->transferMeal($userId, $meals);
-        return view('suggest_meals', compact('meals', 'needsUser', 'nutriDetail', 'createdMeal'));
+        return view('demoSuggest_meals', compact('meals', 'needsUser', 'nutriDetail', 'createdMeal'));
     }
 
     // Chia nhu cầu dinh dưỡng thành các bữa ăn

@@ -5,9 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\SuggestedMenuController;
-use App\Http\Controllers\OrderNutriController;
 use App\Http\Controllers\MenuController;
-use App\Models\Order_nutri;
+use App\Http\Controllers\FoodController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -38,7 +37,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Đề xuất thực đơn
 Route::get('/suggestMeal', [SuggestedMenuController::class, 'handle'])->name('suggestMeal.handle');
 Route::post('/suggestMeal', [SuggestedMenuController::class, 'update'])->name('suggestMeal.update');
 //Xử lý song "/suggestMeal" mới chạy được
 Route::get('/menu', [MenuController::class, 'store'])->name('menu.store');
+
+//Thêm xóa sửa Food
+Route::get('/adminFood', [FoodController::class, 'index'])->name('adminFood.index');

@@ -12,6 +12,11 @@
             margin: 20px;
         }
 
+        .img_food {
+            width: 200px;
+            height: 200px;
+        }
+
         .meal {
             border: 1px solid #ccc;
             padding: 10px;
@@ -30,19 +35,21 @@
 </head>
 
 <body>
-    @include('nutri_needs', ['needsUser' => $needsUser, 'nutriDetail' => $nutriDetail])
+    @include('demoNutri_needs', ['needsUser' => $needsUser, 'nutriDetail' => $nutriDetail])
     <h2>Đề xuất bữa ăn</h2>
     <form action="{{ route('menu.store') }}" method="GET">
 
         @foreach ($meals as $index => $meal)
             <div class="meal">
                 <h3>Bữa ăn {{ $index + 1 }}</h3>
-
                 <div class="category">Món chính:</div>
+                <img class="img_food" src='{{ $meal['meal']['main_dishes']->img }}' alt="main_dishes">
                 <div class="food">{{ $meal['meal']['main_dishes']->food_name }}</div>
                 <div class="category">Món phụ:</div>
+                <img class="img_food" src='{{ $meal['meal']['appetizer']->img }}' alt="appetizer">
                 <div class="food">{{ $meal['meal']['appetizer']->food_name }}</div>
                 <div class="category">Món tráng miệng:</div>
+                <img class="img_food" src='{{ $meal['meal']['desserts']->img }}' alt="desserts">
                 <div class="food">{{ $meal['meal']['desserts']->food_name }}</div>
                 </br>
                 <div class="meal-nutrition">
