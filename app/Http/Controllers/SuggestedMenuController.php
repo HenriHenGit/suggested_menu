@@ -220,10 +220,14 @@ class SuggestedMenuController extends Controller
                     $difference = $this->calculatorDifference($totalNutriFood, $meals_per_day);
 
                     if ($difference <= $toleranceMeal) {
-                        $meal[$listFood[0]->category_food_id] = $listFood[0];
-                        $meal[$listFood[1]->category_food_id] = $listFood[1];
-                        $meal[$listFood[2]->category_food_id] = $listFood[2];
-                        $mealNutri = $totalNutriFood;
+                        if (isset($meal[$listFood[0]->category_food_id]))
+                            $meal[$listFood[0]->category_food_id] = $listFood[0];
+                        if (isset($meal[$listFood[1]->category_food_id]))
+                            $meal[$listFood[1]->category_food_id] = $listFood[1];
+                        if (isset($meal[$listFood[2]->category_food_id]))
+                            $meal[$listFood[2]->category_food_id] = $listFood[2];
+                        if (isset($mealNutri))
+                            $mealNutri = $totalNutriFood;
                     }
 
                     if (!isset($meal[$category])) {
