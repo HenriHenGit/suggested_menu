@@ -31,7 +31,17 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-
+    public function admin(): array
+    {
+        return [
+            'name' => 'Admin', 
+            'email' => 'admin@example.com', 
+            'email_verified_at' => now(),
+            'password' => static::$password ??= Hash::make('adminpassword'), 
+            'remember_token' => Str::random(10),
+            'role' => 'admin',
+        ];
+    }
     /**
      * Indicate that the model's email address should be unverified.
      */
@@ -39,6 +49,6 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
-        ]);
+        ]); 
     }
 }
