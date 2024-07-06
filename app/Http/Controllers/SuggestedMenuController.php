@@ -191,26 +191,19 @@ class SuggestedMenuController extends Controller
         $meals = [];
         $categories = ['main_dishes', 'appetizer', 'desserts'];
 
-
         for ($i = 0; $i < $timesFind; $i++) {
             $meal = [];
             $mealNutri = [];
 
-
             foreach ($categories as $category) {
-
                 $foodsInCategory = $categorizedFoods[$category];
 
-
                 if (!empty($foodsInCategory)) {
-
                     $food = array_shift($foodsInCategory);
                     $listFood = [$food];
 
                     foreach (array_diff($categories, [$category]) as $otherCategory) {
-
                         if (!empty($categorizedFoods[$otherCategory])) {
-
                             $otherFood = array_shift($categorizedFoods[$otherCategory]);
                             $listFood[] = $otherFood;
                         }
@@ -221,9 +214,9 @@ class SuggestedMenuController extends Controller
                     if ($difference <= $toleranceMeal) {
                         if (empty($meal[$listFood[0]->category_food_id]))
                             $meal[$listFood[0]->category_food_id] = $listFood[0];
-                        if (empty($meal[$listFood[1]->category_food_id]))
+                        if (isset($listFood[1]) && empty($meal[$listFood[1]->category_food_id]))
                             $meal[$listFood[1]->category_food_id] = $listFood[1];
-                        if (empty($meal[$listFood[2]->category_food_id]))
+                        if (isset($listFood[2]) && empty($meal[$listFood[2]->category_food_id]))
                             $meal[$listFood[2]->category_food_id] = $listFood[2];
                         $mealNutri = $totalNutriFood;
                     }
@@ -243,6 +236,7 @@ class SuggestedMenuController extends Controller
         }
         return $meals;
     }
+
 
 
     private function transferMeal($userId, $meals)

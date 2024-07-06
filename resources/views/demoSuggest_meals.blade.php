@@ -38,19 +38,28 @@
     @include('demoNutri_needs', ['needsUser' => $needsUser, 'nutriDetail' => $nutriDetail])
     <h2>Đề xuất bữa ăn</h2>
     <form action="{{ route('menu.store') }}" method="GET">
-
         @foreach ($meals as $index => $meal)
             <div class="meal">
                 <h3>Bữa ăn {{ $index + 1 }}</h3>
+
                 <div class="category">Món chính:</div>
-                <img class="img_food" src='{{ $meal['meal']['main_dishes']->img }}' alt="main_dishes">
-                <div class="food">{{ $meal['meal']['main_dishes']->food_name }}</div>
+                @if (isset($meal['meal']['main_dishes']))
+                    <img class="img_food" src='{{ $meal['meal']['main_dishes']->img }}' alt="main_dishes">
+                    <div class="food">{{ $meal['meal']['main_dishes']->food_name }}</div>
+                @endif
+
                 <div class="category">Món phụ:</div>
-                <img class="img_food" src='{{ $meal['meal']['appetizer']->img }}' alt="appetizer">
-                <div class="food">{{ $meal['meal']['appetizer']->food_name }}</div>
+                @if (isset($meal['meal']['appetizer']))
+                    <img class="img_food" src='{{ $meal['meal']['appetizer']->img }}' alt="appetizer">
+                    <div class="food">{{ $meal['meal']['appetizer']->food_name }}</div>
+                @endif
+
                 <div class="category">Món tráng miệng:</div>
-                <img class="img_food" src='{{ $meal['meal']['desserts']->img }}' alt="desserts">
-                <div class="food">{{ $meal['meal']['desserts']->food_name }}</div>
+                @if (isset($meal['meal']['desserts']))
+                    <img class="img_food" src='{{ $meal['meal']['desserts']->img }}' alt="desserts">
+                    <div class="food">{{ $meal['meal']['desserts']->food_name }}</div>
+                @endif
+
                 </br>
                 <div class="meal-nutrition">
                     <div>Tổng dinh dưỡng trong 1 bữa ăn:</div>
@@ -69,14 +78,13 @@
             </div>
         </div>
     @endforeach
+
     @if (isset($createdMeal))
         <div>Đã tạo thực đơn cho bạn</div>
     @else
         <button type="submit" class="btn">Xác nhận bữa ăn</button>
     @endif
-
 </form>
-
 </body>
 
 </html>
