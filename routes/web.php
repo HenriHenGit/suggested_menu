@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialController;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -14,7 +17,9 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-
+Route::get('/guide', function () {
+    return view('guide');
+});
 
 
 
