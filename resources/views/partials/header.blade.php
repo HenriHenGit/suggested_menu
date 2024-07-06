@@ -132,7 +132,14 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                     aria-expanded="false">Dashboard</a>
                                 <ul class="dropdown-menu border-0 shadow-xss">
-                                    <li><a class="dropdown-item" href="dashboard.html"> Dashboard</a></li>
+                                    @if (Auth::check() && Auth::user()->isAdmin())
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                    @else
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                    @endif
+
                                     <li><a class="dropdown-item" href="address.html"> Saved Address </a></li>
                                     <li><a class="dropdown-item" href="orders.html"> Orders </a></li>
                                     <li><a class="dropdown-item" href="coupon.html"> Coupon</a></li>

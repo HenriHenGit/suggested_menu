@@ -12,8 +12,8 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-home.css') }}">
 </head>
 
 <body class="color-theme-green mont-font">
@@ -38,1286 +38,181 @@
             </div>
         </div>
         @include('partials.header')
-        <!-- HEADER WRAPPER -->
-        <!-- BANNER WRAPPER -->
-        <div class="banner-wrapper pt-4 pb-3 md-mt-6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 pe-lg-0 d-none d-lg-block lower-header">
-                        <ul class="dropdown-menu show w-100 posr border-0 mt-0 h-100 pt-2 p-3 shadow-none">
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Biscuits &amp; Snacks <span
-                                        class="alert-warning text-warning">NEW</span></a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Breads &amp; Bakery </a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Breakfast &amp; Dairy <span
-                                        class="alert-success text-success">Offer</span></a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Frozen Foods </a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Fruits &amp; Vegetables </a>
-                            </li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Grocery &amp; Staples </a>
-                            </li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Household Needs </a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Meats &amp; Seafood </a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Fruits &amp; Vegetables </a>
-                            </li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Grocery &amp; Staples </a>
-                            </li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Household Needs </a></li>
-                            <li><a class="dropdown-item dropdown-toggle" href="#">Meats &amp; Seafood </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-9">
-                        <div
-                            class="owl-carousel slider-banner banner-wrap owl-theme ovh nav-none owl-arrow-center arrow-container">
-                            <div class="item rounded-6 bg-image-cover ovh style1 d-flex justify-content-start"
-                                style="background-image: url(images/banner-slider-2.jpg);">
-                                <div class="slide-content text-left w-50 ps-lg-5">
-                                    <span class="text-grey-700">All natural products</span>
-                                    <h2 class="text-grey-900"><b class="d-block">Special Offer </b>of the week</h2>
-                                    <p class="text-grey-600">Organic food is food produced by methods that comply with
-                                        the standard of farming.</p>
-                                    <div class="clearfix"></div>
-                                    <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                                </div>
-                            </div>
-                            <div class="item rounded-6 bg-image-cover ovh style1 d-flex justify-content-center"
-                                style="background-image: url(images/banner-slider-5.jpg);">
-                                <div class="slide-content text-center w-50">
-                                    <span class="text-grey-700">All natural products</span>
-                                    <h2 class="text-grey-900"><b>Healty Food Pure</b> Organic Market</h2>
-                                    <p class="text-grey-600">Organic food is food produced by methods that comply with
-                                        the standard of farming.</p>
-                                    <div class="clearfix"></div>
-                                    <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                                </div>
-                            </div>
 
-                            <div class="item rounded-6 bg-image-cover ovh style1 d-flex justify-content-center"
-                                style="background-image: url(images/banner-slider-1.jpg);">
-                                <div class="slide-content text-center w-50">
-                                    <span class="text-grey-700">All natural products</span>
-                                    <h2 class="text-grey-900"><b class="d-block">Summer Discount</b> Organic Market
-                                    </h2>
-                                    <p class="text-grey-600">Organic food is food produced by methods that comply with
-                                        the standard of farming.</p>
-                                    <div class="clearfix"></div>
-                                    <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+        <div class="outer-container">
+            <!-- Container for total kcal and nutrition -->
+            <div class="circle-container">
+                <div class="circle" id="total-kcal">
+                    <div>0 kcal</div>
                 </div>
             </div>
-        </div>
-        <!-- BANNER WRAPPER -->
-        <!-- CATEGORY WRAPPER -->
-        <div class="content-wrap">
-            <div class="container">
-                <div class="row m-0">
-                    <div class="col-lg-12 bg-white rounded-6 p-4 pb-3">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 xs-mb-4 md-mb-3 text-start">
-                                <i class="ti-shopping-cart text-grey-900 display1-size float-start me-3"></i>
-                                <h4 class="mt-0 fw-600 text-grey-900 font-xsss mb-0 ls-0">100% Secure Payments</h4>
-                                <p class="font-xsssss fw-500 text-grey-500 lh-26 mt-0 mb-0">100% Payment Protection.
-                                </p>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 xs-mb-4 md-mb-3 text-start">
-                                <i class="ti-headphone-alt text-grey-900 display1-size float-start me-3"></i>
-                                <h4 class="mt-0 fw-600 text-grey-900 font-xsss mb-0 ls-0">Support</h4>
-                                <p class="font-xsssss fw-500 text-grey-500 lh-26 mt-0 mb-0">Alway online feedback 24/7
-                                </p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 md-mb-3 text-start">
-                                <i class="ti-lock text-grey-900 display1-size float-start me-3"></i>
-                                <h4 class="mt-0 fw-600 text-grey-900 font-xsss mb-0 ls-0">Trust pay</h4>
-                                <p class="font-xsssss fw-500 text-grey-500 lh-26 mt-0 mb-0">Easy Return Policy.</p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 text-start">
-                                <i class="ti-reload text-grey-900 display1-size float-start me-3"></i>
-                                <h4 class="mt-0 fw-600 text-grey-900 font-xsss mb-0 ls-0">Return and Refund</h4>
-                                <p class="font-xsssss fw-500 text-grey-500 lh-26 mt-0 mb-0">100% money back guarantee
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CATEGORY WRAPPER -->
-
-        <div class="main-wrap pt-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 pe-lg-0 d-none d-lg-block">
-                        <div class="card bg-white rounded-6 mb-3 border-0 p-3">
-                            <div class="col-lg-12">
-                                <h4 class="fw-700 d-flex font-xsss mb-4 mt-2">Trend Product <i
-                                        class="feather-chevrons-right text-grey-500 font-xs ms-auto"></i></h4>
-
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-xs-5 col-sm-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-10.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-xs-7 col-sm-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Blue Diamond
-                                        Almonds Lightly Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-xs-5 col-sm-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-11.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-xs-7 col-sm-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Assorted Donuts
-                                        Each Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-xs-5 col-sm-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-12.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-xs-7 col-sm-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Natures Own
-                                        Wheat Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-xs-5 col-sm-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-13.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-xs-7 col-sm-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Kobita Almonds
-                                        Lightly Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-5 col-sm-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-14.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-xs-7 col-sm-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Almonds Sweet &
-                                        Salty Kettle Corn</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card w-100 border-0 shadow-none mb-3 ovh rounded-6 hover-zoom-image">
-                            <img src="images/side-banner-4.jpg" alt="" class="w-100">
-                            <div class="p-4 posa bottom-0 w-100">
-                                <span
-                                    class="fw-700 ls-3 text-white bg-current ps-2 pe-2 lh-24 rounded-6 d-inline-block font-xsssss">30%
-                                    OFF</span>
-                                <h4 class="font-xs fw-700 lh-28 text-grey-900 mb-3 mt-3 ls-0">High Quality <br>
-                                    Products</h4>
-                                <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss">SHOP NOW</a>
-                            </div>
-                        </div>
-                        <div class="card bg-white rounded-6 mb-3 border-0 p-3">
-                            <div class="col-lg-12">
-                                <h4 class="fw-700 d-flex font-xsss mb-4 mt-2">Featured Product <i
-                                        class="feather-chevrons-right text-grey-500 font-xs ms-auto"></i></h4>
-
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-5 col-xs-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-15.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-sm-7 col-xs-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Blue Diamond
-                                        Almonds Lightly Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-5 col-xs-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-16.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-sm-7 col-xs-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Assorted Donuts
-                                        Each Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-5 col-xs-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-17.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-sm-7 col-xs-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Natures Own
-                                        Wheat Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-5 col-xs-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-18.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-sm-7 col-xs-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Kobita Almonds
-                                        Lightly Salted</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-5 col-xs-5"><a href="#" class="d-block text-center"
-                                        data-bs-toggle="modal" data-bs-target="#productmodal"><img
-                                            src="images/g-19.png" alt="product-image"
-                                            class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a></div>
-                                <div class="col-sm-7 col-xs-7 ps-0">
-                                    <span
-                                        class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
-                                    <a href="single-product-1.html"
-                                        class="text-grey-900 fw-600 font-xssss lh-20 d-block ls-0 mb-0">Almonds Sweet &
-                                        Salty Kettle Corn</a>
-                                    <h6 class="font-xsss ls-3 fw-700 text-current float-start mt-1"><span
-                                            class="font-xsssss text-grey-500">$</span>29 </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card bg-lightblue rounded-6 mb-3 border-0">
-                            <img src="images/app-store-banner.jpg" alt="app-banner" class="w-100">
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4 class="fw-700 font-xs mb-4 mt-2">Deal of the day</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <div
-                                    class="banner-slider-4 owl-carousel owl-theme dot-none owl-nav-link owl-arrow-top rounded-6 bg-white">
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                30% off</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-15.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star-disable.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Apis Mixed Fruit
-                                                    Jam </a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>49 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">500gm</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                Deal</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-16.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star-disable.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Masoor Dal
-                                                    (Split)</a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>29 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">6kg</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                Sale</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-17.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star-disable.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star-disable.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Tata Iodized
-                                                    Salt</a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>43 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">50gm</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                Sale</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-18.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Dabur Lal Dant
-                                                    Manjan</a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>56 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">100gm</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                Sale</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-19.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Yeppe Noddles
-                                                    Masala</a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>22 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">500gm</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-items">
-                                        <div class="col-lg-12 p-3 rounded-0 posr">
-                                            <h4
-                                                class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 d-inline-block posa rounded-3">
-                                                Sale</h4>
-                                            <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                                    class="ti-heart font-xs text-grey-500"></i></a>
-                                            <div class="clearfix"></div>
-                                            <a href="#" class="d-block text-center p-2" data-bs-toggle="modal"
-                                                data-bs-target="#productmodal"><img src="images/g-11.png"
-                                                    alt="product-image" class="w-100 mt-1 d-inline-block"></a>
-                                            <div class="star d-inline text-left">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                                <img src="images/star.png" alt="star"
-                                                    class="w-10 me-1 float-start">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <h2 class="mt-1"><a href="single-product-1.html"
-                                                    class="text-grey-700 fw-600 font-xsss lh-2 ls-0">Yeppe Noddles
-                                                    Masala</a></h2>
-                                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                                    class="font-xsssss text-grey-500">$</span>67 <span
-                                                    class="ms-auto text-grey-500 fw-500 font-xsssss">500gm</span></h6>
-                                            <div class="cart-count d-flex mt-4 mb-2">
-                                                <div class="number">
-                                                    <span class="minus">-</span>
-                                                    <input type="text" class="open-font" value="1">
-                                                    <span class="plus">+</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mt-3">
-                                <div class="card border-0 banner-wrap bg-image-cover bg-image-center"
-                                    style="background-image: url(images/bg-grocery-2.jpg);">
-                                    <div class="slide-content style4 text-center w-100">
-                                        <span class="text-current">All natural products</span>
-                                        <h2 class="text-grey-900"><b class="d-block">SUMMER DISCOUNT </b>of the week
-                                        </h2>
-                                        <div class="clearfix"></div>
-                                        <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 pt-0 mt-3">
-                                <div class="card side-wrap border-0 p-xl-5 p-4 bg-white">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Product
-                                                    Categoires</h6>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckDrinks1">
-                                                <label class="form-check-label" for="flexCheckDrinks1">Drinks</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Snacks"
-                                                    id="flexCheckSnacks2">
-                                                <label class="form-check-label" for="flexCheckSnacks2">Snacks &amp;
-                                                    Biscuits</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Breads"
-                                                    id="flexCheckBreads3">
-                                                <label class="form-check-label" for="flexCheckBreads3">Breads &amp;
-                                                    Bakery</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Breakfast"
-                                                    id="flexCheckBreakfast4">
-                                                <label class="form-check-label" for="flexCheckBreakfast4">Breakfast
-                                                    &amp; Dairy</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Frozen"
-                                                    id="flexCheckFrozen">
-                                                <label class="form-check-label" for="flexCheckFrozen">Frozen
-                                                    Foods</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Fruits"
-                                                    id="flexCheckFruits">
-                                                <label class="form-check-label" for="flexCheckFruits">Fruits &amp;
-                                                    Vegetables</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Grocery"
-                                                    id="flexCheckGrocery">
-                                                <label class="form-check-label" for="flexCheckGrocery">Grocery &amp;
-                                                    Staples</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Household"
-                                                    id="flexCheckHousehold">
-                                                <label class="form-check-label" for="flexCheckHousehold">Household
-                                                    Needs</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Meats"
-                                                    id="flexCheckMeats">
-                                                <label class="form-check-label" for="flexCheckMeats">Meats &amp;
-                                                    Seafood</label>
-                                                <i
-                                                    class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Product
-                                                    Status</h6>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock1">
-                                                <label class="form-check-label" for="flexCheckStock1">In Stock</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Snacks"
-                                                    id="flexCheckSlae">
-                                                <label class="form-check-label" for="flexCheckSlae">On Sale</label>
-                                            </div>
-
-                                            <div class="form-group mb-3 mt-3">
-                                                <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">
-                                                    Customer Ratings</h6>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock2">
-                                                <label class="form-check-label" for="flexCheckStock2"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"> <span
-                                                        class="ms-auto text-grey-500">(13)</span></label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock3">
-                                                <label class="form-check-label" for="flexCheckStock3"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"> <span
-                                                        class="ms-auto text-grey-500">(22)</span></label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock4">
-                                                <label class="form-check-label" for="flexCheckStock4"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"> <span
-                                                        class="ms-auto text-grey-500">(542)</span></label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock5">
-                                                <label class="form-check-label" for="flexCheckStock5"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img src="images/star.png"
-                                                        alt="star" class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"> <span
-                                                        class="ms-auto text-grey-500">(322)</span></label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckStock6">
-                                                <label class="form-check-label" for="flexCheckStock6"><img
-                                                        src="images/star.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"><img
-                                                        src="images/star-disable.png" alt="star"
-                                                        class="w-15 me-1 float-start mt-1"> <span
-                                                        class="ms-auto text-grey-500">(342)</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">
-                                                    Product Brand</h6>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Drinks"
-                                                    id="flexCheckDrinkser">
-                                                <label class="form-check-label"
-                                                    for="flexCheckDrinkser">Vegetarian</label>
-                                                <span
-                                                    class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(1233)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Snacks"
-                                                    id="flexCheckSnacks7">
-                                                <label class="form-check-label" for="flexCheckSnacks7">Vegan</label>
-                                                <span
-                                                    class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(2231)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Breads"
-                                                    id="flexCheckBreads454">
-                                                <label class="form-check-label" for="flexCheckBreads454">Green
-                                                    Food</label>
-                                                <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(754)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Breakfast"
-                                                    id="flexCheckBreakfast6">
-                                                <label class="form-check-label" for="flexCheckBreakfast6">Milk
-                                                    Fess</label>
-                                                <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(27)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Frozen"
-                                                    id="flexCheckFrozen8">
-                                                <label class="form-check-label" for="flexCheckFrozen8">Frozen
-                                                    Foods</label>
-                                                <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(61)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Fruits"
-                                                    id="flexCheckFruits87">
-                                                <label class="form-check-label" for="flexCheckFruits87">Fruits &amp;
-                                                    Vegetables</label>
-                                                <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(76)</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Grocery"
-                                                    id="flexCheckGrocery76">
-                                                <label class="form-check-label" for="flexCheckGrocery76">Grocery
-                                                    &amp; Staples</label>
-                                                <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(45)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mt-3">
-                                <div class="card d-flex flex-row justify-content-start p-3 bg-white border-0">
-                                    <a href="#" class="mt-1"><span
-                                            class="feather-grid text-grey-600 font-xs"></span></a>
-                                    <select class="form-select ms-auto float-end" aria-label="Default select example">
-                                        <option selected="">Sort by latest</option>
-                                        <option value="1">Sort by popularity</option>
-                                        <option value="2">Sort by price : low to high</option>
-                                        <option value="3">Sort by price : high to low</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row rounded-6 m-0 bg-white mt-3">
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end rounded-0 posr">
-                                <span
-                                    class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30%
-                                    off</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-16.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds
-                                        Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>29 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-17.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted Donuts Each
-                                        Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>29 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-15.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Natures Own Wheat
-                                        Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>29 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-4 border-none-xs rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-19.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Kobita Almonds
-                                        Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>99 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <span
-                                    class="ls-3 font-xsssss text-white text-uppercase bg-danger fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">SALE</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-11.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Almonds Sweet &
-                                        Salty Kettle Corn</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>88 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-12.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds
-                                        Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>76 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-10.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted Donuts Each
-                                        Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>56 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-13.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Natures Own Wheat
-                                        Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>12 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-14.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Kobita Almonds
-                                        Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>23 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-19.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Almonds Sweet &
-                                        Salty Kettle Corn</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>54 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-end border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-11.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Almonds Sweet &
-                                        Salty Kettle Corn</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>22 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3 col-xs-6 p-3 border-none-xs border-top rounded-0 posr">
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i
-                                        class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center" data-bs-toggle="modal"
-                                    data-bs-target="#productmodal"><img src="images/g-12.png" alt="product-image"
-                                        class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star"
-                                        class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product-1.html"
-                                        class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted Donuts Each
-                                        Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span
-                                        class="font-xsssss text-grey-500">$</span>29 <span
-                                        class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 mt-5">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled"><a class="page-link" href="#"><i
-                                                    class="feather-chevron-left"></i></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"><i
-                                                    class="feather-chevron-right"></i></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <div>Dinh dưỡng cho nhóm người</div>
+                <div>sắt 200g</div>
             </div>
         </div>
 
+        <div class="date-container">
+            <!-- Date display here -->
+            <?php
+            $days = [];
+            for ($i = -3; $i <= 3; $i++) {
+                $days[] = date('d/m', strtotime("$i days"));
+            }
+            $currentDate = date('d/m');
+            ?>
 
-        <!-- BLOG WRAPPER -->
-        <div class="blog-wrapper pt-2 pb-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h4 class="fw-700 font-sm mb-4 mt-2 text-uppercase d-flex lh-18">Our Blog <a href="#"
-                                class="ms-auto text-grey-500 fw-600 text-uppercase font-xsssss border-bottom ls-3">view
-                                all</a></h4>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <article class="blog-div sm-mb-3">
-                            <div class="card border-0 bg-transparent">
-                                <div class="card-image mb-2 rounded-6 ovh"><a href="blog-single.html"><img
-                                            src="images/blog-1.jpg" alt="blog" class="w-100 hover-zoom"></a>
-                                </div>
-                                <div class="card-content">
-                                    <span
-                                        class="ls-3 mb-1 font-xssssss text-white text-uppercase bg-green fw-700 p-2 lh-1 d-inline-block rounded-10">LIFESTYLE</span>
-                                    <h2><a href="blog-single.html"
-                                            class="post-title fw-600 font-xss text-grey-900 lh-24">Broad beans,
-                                            tomato, garlic & mozzarella cheese bruschetta</a></h2>
+            @foreach ($days as $day)
+                <div class="circle-small {{ $day === $currentDate ? 'current-day' : '' }}">{{ $day }}</div>
+            @endforeach
+        </div>
 
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-user font-xss me-1"></i>By Admin</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-message-circle font-xs me-1"></i>34 Comments</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-0"><i
-                                            class="feather-calendar font-xss me-1"></i>16 March 2020</h4>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <article class="blog-div sm-mb-3">
-                            <div class="card border-0 bg-transparent">
-                                <div class="card-image mb-2 rounded-6 ovh"><a href="blog-single.html"><img
-                                            src="images/blog-2.jpg" alt="blog" class="w-100 hover-zoom"></a>
-                                </div>
-                                <div class="card-content">
-                                    <span
-                                        class="ls-3 mb-1 font-xssssss text-white text-uppercase bg-green fw-700 p-2 lh-1 d-inline-block rounded-10">FOOD</span>
-                                    <h2><a href="blog-single.html"
-                                            class="post-title fw-600 font-xss text-grey-900 lh-24">Steak salad with
-                                            goat cheese and arugula for your family?</a></h2>
+        <div class="meals-container">
+            <!-- Meal containers -->
+            <div class="meal" id="breakfast">
+                <div class="meal-title">Bữa sáng</div>
+                <ul class="meal-list">
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 1', '200kcal', 'image1.jpg', [{label: 'Protein', value: '10g'}, {label: 'Fat', value: '15g'}, {label: 'Carbohydrate', value: '20g'}])">
+                        <span>Tên món 1 <span class="kcal-info">200kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 2', '150kcal', 'image2.jpg', [{label: 'Protein', value: '8g'}, {label: 'Fat', value: '12g'}, {label: 'Carbohydrate', value: '15g'}])">
+                        <span>Tên món 2 <span class="kcal-info">150kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                </ul>
+            </div>
 
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-user font-xss me-1"></i>By Admin</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-message-circle font-xs me-1"></i>12 Comments</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-0"><i
-                                            class="feather-calendar font-xss me-1"></i>23 Feb 2020</h4>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <article class="blog-div">
-                            <div class="card border-0 bg-transparent">
-                                <div class="card-image mb-2 rounded-6 ovh"><a href="blog-single.html"><img
-                                            src="images/blog-3.jpg" alt="blog" class="w-100 hover-zoom"></a>
-                                </div>
-                                <div class="card-content">
-                                    <span
-                                        class="ls-3 mb-1 font-xssssss text-white text-uppercase bg-green fw-700 p-2 lh-1 d-inline-block rounded-10">Freshveg</span>
-                                    <h2><a href="blog-single.html"
-                                            class="post-title fw-600 font-xss text-grey-900 lh-24">Egg salad sandwich
-                                            with avocado and watercress chip pancakes</a></h2>
+            <div class="meal" id="lunch">
+                <div class="meal-title">Bữa trưa</div>
+                <ul class="meal-list">
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 3', '300kcal', 'image3.jpg', [{label: 'Protein', value: '15g'}, {label: 'Fat', value: '20g'}, {label: 'Carbohydrate', value: '30g'}])">
+                        <span>Tên món 3 <span class="kcal-info">300kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 4', '250kcal', 'image4.jpg', [{label: 'Protein', value: '12g'}, {label: 'Fat', value: '18g'}, {label: 'Carbohydrate', value: '25g'}])">
+                        <span>Tên món 4 <span class="kcal-info">250kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                </ul>
+            </div>
 
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-user font-xss me-1"></i>By Admin</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-3"><i
-                                            class="feather-message-circle font-xs me-1"></i>54 Comments</h4>
-                                    <h4 class="text-grey-500 float-start d-flex fw-600 lh-20 font-xsssss mt-1 me-0"><i
-                                            class="feather-calendar font-xss me-1"></i>22 Aug 2020</h4>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+            <div class="meal" id="dinner">
+                <div class="meal-title">Bữa tối</div>
+                <ul class="meal-list">
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 5', '400kcal', 'image5.jpg', [{label: 'Protein', value: '20g'}, {label: 'Fat', value: '25g'}, {label: 'Carbohydrate', value: '45g'}])">
+                        <span>Tên món 5 <span class="kcal-info">400kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                    <li class="meal-item"
+                        onclick="showFoodDetail('Món 6', '350kcal', 'image6.jpg', [{label: 'Protein', value: '22g'}, {label: 'Fat', value: '28g'}, {label: 'Carbohydrate', value: '45g'}])">
+                        <span>Tên món 6 <span class="kcal-info">350kcal</span></span>
+                        <button class="add-button">+</button>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- BLOG WRAPPER -->
 
+        <!-- Panel thông tin chi tiết món ăn -->
+        <div class="info-panel" id="infoPanel">
+            <div class="info-panel-content" id="infoPanelContent">
+                <div id="foodName"></div>
+                <img src="" alt="Ảnh món ăn" id="foodImage">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Giá trị dinh dưỡng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="nutritionTable">
+                        <!-- Nutrition details will be added dynamically -->
+                    </tbody>
+                </table>
+                <button class="close-button" onclick="closeInfoPanel()">Đóng</button>
+            </div>
+        </div>
+
+        <script>
+            // Update total kcal for each meal and update in the large circle
+            function updateTotalKcal() {
+                let totalKcal = 0;
+
+                // Calculate total kcal for breakfast
+                let breakfastKcalElements = document.querySelectorAll('#breakfast .kcal-info');
+                breakfastKcalElements.forEach(element => {
+                    let kcal = parseInt(element.textContent);
+                    if (!isNaN(kcal)) {
+                        totalKcal += kcal;
+                    }
+                });
+
+                // Calculate total kcal for lunch
+                let lunchKcalElements = document.querySelectorAll('#lunch .kcal-info');
+                lunchKcalElements.forEach(element => {
+                    let kcal = parseInt(element.textContent);
+                    if (!isNaN(kcal)) {
+                        totalKcal += kcal;
+                    }
+                });
+
+                // Calculate total kcal for dinner
+                let dinnerKcalElements = document.querySelectorAll('#dinner .kcal-info');
+                dinnerKcalElements.forEach(element => {
+                    let kcal = parseInt(element.textContent);
+                    if (!isNaN(kcal)) {
+                        totalKcal += kcal;
+                    }
+                });
+
+                // Update total kcal in the large circle
+                document.querySelector('#total-kcal div').textContent = totalKcal + ' kcal';
+            }
+
+            // Show detailed food information
+            function showFoodDetail(foodName, kcal, imageUrl, nutrition) {
+                // Set food name
+                document.getElementById('foodName').textContent = foodName;
+
+                // Show food image
+                document.getElementById('foodImage').src = imageUrl;
+
+                // Build nutrition table
+                let nutritionTable = document.getElementById('nutritionTable');
+                nutritionTable.innerHTML = ''; // Clear old content
+
+                nutrition.forEach(item => {
+                    let row = document.createElement('tr');
+                    let labelCell = document.createElement('td');
+                    labelCell.textContent = item.label;
+                    let valueCell = document.createElement('td');
+                    valueCell.textContent = item.value;
+                    row.appendChild(labelCell);
+                    row.appendChild(valueCell);
+                    nutritionTable.appendChild(row);
+                });
+
+                // Open info panel
+                document.getElementById('infoPanel').classList.add('open');
+
+                // Update total kcal after showing food details
+                updateTotalKcal();
+            }
+
+            // Close food detail panel
+            function closeInfoPanel() {
+                document.getElementById('infoPanel').classList.remove('open');
+            }
+
+            // Call updateTotalKcal() when page is loaded and on any change
+            window.onload = function() {
+                updateTotalKcal();
+            };
+        </script>
         @include('partials.footer')
 
     </div>
