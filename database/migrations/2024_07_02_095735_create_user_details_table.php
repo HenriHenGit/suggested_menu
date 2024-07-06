@@ -11,20 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_nutris', function (Blueprint $table) {
-            $table->id();
-            $table->integer('age')->nullable(false);
-            $table->boolean('gender')->nullable(false);
-            $table->integer('level')->nullable(false);
-            $table->string('level_detail')->nullable();
+        Schema::create('user_details', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('nutri_id');
             $table->float('amount')->nullable(false);
-            $table->string('nutri_id')->nullable(false);
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
 
-            // Khóa ngoại
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('nutri_id')->references('id')->on('nutris')->onDelete('cascade');
+
+
+            $table->primary(['user_id', 'nutri_id']);
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_nutris');
+        Schema::dropIfExists('user_details');
     }
 };

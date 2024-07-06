@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class UserSeeder extends Seeder
@@ -15,10 +16,23 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Create a regular user
-        User::factory()->create();
+        DB::table('users')->insert([
+            [
+                'name' => 'Trần Xuân Hiếu',
+                'email' => 'henri16102938@gmail.com',
+                'password' => 'hieu123',
+                'age' => 18,
+                'gender' => true,
+                'body_weight' => 70,
+                'body_height' => 170,
+                'role' => 'admin',
+            ],
 
-        // Create an admin user
-        User::factory()->admin()->create();
+        ]);
+        // Create a regular user
+        // User::factory()->create();
+
+        // // Create an admin user
+        // User::factory()->admin()->create();
     }
 }

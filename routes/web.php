@@ -6,8 +6,10 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SocialController;
-
-
+use App\Http\Controllers\SuggestedMenuController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\FoodController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +38,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+
 // Route cho admin dashboard
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -50,3 +53,13 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Đề xuất thực đơn
+Route::get('/suggestMeal', [SuggestedMenuController::class, 'handle'])->name('suggestMeal.handle');
+Route::post('/suggestMeal', [SuggestedMenuController::class, 'update'])->name('suggestMeal.update');
+//Xử lý song "/suggestMeal" mới chạy được
+Route::get('/menu', [MenuController::class, 'store'])->name('menu.store');
+
+//Thêm xóa sửa Food
+Route::get('/adminFood', [FoodController::class, 'index'])->name('adminFood.index');
