@@ -13,7 +13,8 @@
                     class="card shadow-lg border-0 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10 theme-dark-bg">
                     <div class="card-body rounded-0 text-start p-4">
                         <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Register
-                            <br>your account</h2>
+                            <br>your account
+                        </h2>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
@@ -57,7 +58,7 @@
                                     placeholder="Height (cm)" required>
                             </div>
                             <div class="form-group icon-input mb-3">
-                                <i class="font-sm ti-weight text-grey-500 pe-0"></i>
+                                <i class="font-sm ti-layout-tab text-grey-500 pe-0"></i>
                                 <input type="number" name="body_weight" step="0.1"
                                     class="style2-input ps-5 form-control text-grey-900 white-text font-xsss fw-600"
                                     placeholder="Weight (kg)" required>
@@ -78,7 +79,7 @@
                             <div class="col-sm-12 p-0 text-start">
                                 <div class="form-group mb-1">
                                     <button type="submit"
-                                        class="bg-current text-center style2-input text-white fw-600 border-0 p-0">Register</button>
+                                        class="bg-current text-center style2-input text-white fw-600 border-0 p-0 btn-custom">Register</button>
                                 </div>
                                 <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have an account? <a
                                         href="{{ route('login') }}" class="fw-700 ms-1">Login</a></h6>

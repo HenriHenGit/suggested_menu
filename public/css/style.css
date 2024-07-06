@@ -16630,7 +16630,7 @@ select.sort {
   background-size: 100%;
 }
 .demo-style .demo-banner .content-text {
-  padding-top: 120px;
+  padding-top: 421px;
 }
 @media (max-width: 991.98px) {
   .demo-style .demo-banner .content-text {
@@ -16779,4 +16779,18 @@ select.sort {
   font-size: 13px;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+
+/* Định kiểu cho nút */
+.btn-custom {
+  background-color: #007bff; /* Màu nền tùy chỉnh */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Padding bên trong nút */
+  border: none; /* Loại bỏ viền */
+  border-radius: 5px; /* Bo góc */
+  display: inline-block; /* Đảm bảo nút là khối nội tuyến */
+  text-align: center; /* Căn giữa văn bản */
+  width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+  max-width: 100%; /* Đặt chiều rộng tối đa nếu cần */
+  box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước tổng thể */
+}

@@ -13,7 +13,8 @@
                     class="card shadow-lg border-0 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10 theme-dark-bg">
                     <div class="card-body rounded-0 text-start p-4">
                         <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Login into
-                            <br>your account</h2>
+                            <br>your account
+                        </h2>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -41,8 +42,9 @@
                             <div class="col-sm-12 p-0 text-start">
                                 <div class="form-group mb-1">
                                     <button type="submit"
-                                        class="bg-current text-center style2-input text-white fw-600 border-0 p-0">Login</button>
+                                        class="bg-current text-center style2-input text-white fw-600 border-0 p-0 btn-custom">Login</button>
                                 </div>
+
                                 <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Don't have an account? <a
                                         href="{{ route('register') }}" class="fw-700 ms-1">Register</a></h6>
                             </div>
