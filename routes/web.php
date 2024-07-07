@@ -25,6 +25,8 @@ Route::get('/guide', function () {
 
 
 
+
+
 Route::get('auth/{provider}', [SocialController::class, 'redirectToProvider'])->name('social.redirect');
 Route::get('auth/{provider}/callback', [SocialController::class, 'handleProviderCallback']);
 
@@ -52,8 +54,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Đề xuất thực đơn
 Route::get('/suggestMeal', [SuggestedMenuController::class, 'handle'])->name('suggestMeal.handle');
@@ -63,3 +63,8 @@ Route::get('/menu', [MenuController::class, 'store'])->name('menu.store');
 
 //Thêm xóa sửa Food
 Route::get('/adminFood', [FoodController::class, 'index'])->name('adminFood.index');
+
+Auth::routes(['verify' => true]);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

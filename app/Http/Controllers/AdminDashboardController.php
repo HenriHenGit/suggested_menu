@@ -1,6 +1,4 @@
 <?php
-// app/Http/Controllers/AdminDashboardController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

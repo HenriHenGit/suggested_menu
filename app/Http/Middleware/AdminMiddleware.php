@@ -8,12 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
-            return $next($request);
+        // Kiểm tra quyền admin của người dùng
+        if (! $request->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
         }
 
-        return redirect('/login'); // Nếu không phải admin, đưa về trang login
+        return $next($request);
     }
 }
