@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminDashboardController;
+
 
 class AdminMiddleware
 {
@@ -15,13 +16,12 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        // Kiểm tra quyền admin của người dùng
-        if (! $request->user()->isAdmin()) {
-            abort(403, 'Unauthorized action.');
+        if (Auth::check() && Auth::user()->isAdmin()) {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('/')->with('error', 'You do not have admin access');
     }
 }
