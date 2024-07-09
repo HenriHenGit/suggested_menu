@@ -36,8 +36,12 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 // Registration Routes
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -47,7 +51,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Route cho admin dashboard
 
 
-Route::middleware(['auth','admin'])->group(function(){
+Route::middleware(['auth',])->group(function(){
     Route::get('/admin/dashboard',[AdminDashboardController::class,'index'])->name('admin.dashboard');
 });
 

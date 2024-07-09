@@ -56,7 +56,7 @@
                                         href="{{ route('register') }}" class="fw-700 ms-1">Đăng ký</a></h6>
                             </div>
                             <div class="col-sm-12 p-0 text-center mt-2 mb-0">
-                                <h6 class="mb-0 d-inline-block fw-500 font-xsss text-grey-500 mb-3">Hoặc, Đăng nhập bằng tài
+                                <h6 class=" d-inline-block fw-500 font-xsss text-grey-500 mb-3">Hoặc, Đăng nhập bằng tài
                                     khoản xã hội</h6>
                                 <div class="form-group mb-1">
                                     <a href="{{ route('login.google') }}"
